@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+    <PackageReference Include="SimpleInjector" Version="5.3.3" />
+	<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Orion.Application\Orion.Application.csproj" />
+    <ProjectReference Include="..\Orion.Core\Orion.Core.csproj" />
+    <ProjectReference Include="..\Orion.Infra.Data\Orion.Infra.Data.csproj" />
+    <ProjectReference Include="..\Orion.Shared\Orion.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
