@@ -7,7 +7,7 @@ namespace Orion.Infra.Data.FluentMap
 {
     internal class UsersMap : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<User> modelBuilder)
+        public new void Configure(EntityTypeBuilder<User> modelBuilder)
         {
             modelBuilder
            .HasMany<Immobile>(s => s.Properties)
@@ -20,6 +20,7 @@ namespace Orion.Infra.Data.FluentMap
             modelBuilder.Property(c => c.LastName).HasMaxLength(100).IsRequired();
             modelBuilder.Property(c => c.Email).HasMaxLength(150).IsRequired();
             modelBuilder.Property(c => c.CreationDate).IsRequired();
+            modelBuilder.Ignore(c => c.ValidationResult);
         }
     }
 }

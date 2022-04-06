@@ -22,6 +22,53 @@ namespace Orion.Infra.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Orion.Core.Entities.Properties.Address", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)")
+                        .HasColumnName("city");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("creation_date");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)")
+                        .HasColumnName("district");
+
+                    b.Property<Guid>("ImmobileId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("immobile_id");
+
+                    b.Property<DateTime?>("LastModification")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_modification");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)")
+                        .HasColumnName("state");
+
+                    b.HasKey("Id")
+                        .HasName("pk_addresses");
+
+                    b.HasIndex("ImmobileId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_addresses_immobile_id");
+
+                    b.ToTable("addresses", (string)null);
+                });
+
             modelBuilder.Entity("Orion.Core.Entities.Properties.Immobile", b =>
                 {
                     b.Property<Guid>("Id")
@@ -32,12 +79,6 @@ namespace Orion.Infra.Data.Migrations
                     b.Property<int>("AcquisitionType")
                         .HasColumnType("integer")
                         .HasColumnName("acquisition_type");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("address");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("timestamp with time zone")
@@ -149,6 +190,18 @@ namespace Orion.Infra.Data.Migrations
                     b.ToTable("users", (string)null);
                 });
 
+            modelBuilder.Entity("Orion.Core.Entities.Properties.Address", b =>
+                {
+                    b.HasOne("Orion.Core.Entities.Properties.Immobile", "Immobile")
+                        .WithOne("Address")
+                        .HasForeignKey("Orion.Core.Entities.Properties.Address", "ImmobileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_addresses_properties_immobile_id");
+
+                    b.Navigation("Immobile");
+                });
+
             modelBuilder.Entity("Orion.Core.Entities.Properties.Immobile", b =>
                 {
                     b.HasOne("Orion.Core.Entities.Users.User", "UserOwner")
@@ -159,6 +212,11 @@ namespace Orion.Infra.Data.Migrations
                         .HasConstraintName("fk_properties_users_user_id1");
 
                     b.Navigation("UserOwner");
+                });
+
+            modelBuilder.Entity("Orion.Core.Entities.Properties.Immobile", b =>
+                {
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Orion.Core.Entities.Users.User", b =>

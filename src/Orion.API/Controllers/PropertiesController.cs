@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
+using Orion.API.OData;
 using Orion.Application.Commands.CreateImmobile;
 using Orion.Application.Queries.GetProperties;
 
@@ -24,6 +26,7 @@ namespace Orion.API.Controllers
         }
 
         [HttpGet]
+        [CustomQuery]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             return await SendCommand(new GetPropertiesQuery(), cancellationToken) switch

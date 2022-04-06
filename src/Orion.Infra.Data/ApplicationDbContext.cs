@@ -13,11 +13,13 @@ namespace Orion.Infra.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Immobile> Properties { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsersMap());
             modelBuilder.ApplyConfiguration(new ImmobileMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

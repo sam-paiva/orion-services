@@ -20,14 +20,12 @@ namespace Orion.Application.Commands.CreateImmobile
         public async Task<Result<ImmobileDto>> Handle(CreateImmobileCommand request, CancellationToken cancellationToken)
         {
             User user = await _userRepository.GetAsync(x => x.Id == request.UserId);
-            Immobile immobile = new(request.Title!, request.Description!, request.Address!, request.PhotosUrl, request.Price, request.AcquisitionType, request.ImmobileType);
-
+            Address address = new(request.Address!.City, request.Address.District, request.Address.State);
+            Immobile immobile = new(request.Title!, request.Description!, address, request.PhotosUrl, request.Price, request.AcquisitionType, request.ImmobileType);
             user.AddImmobile(immobile);
-
             await _userRepository.UpdateAsync(user);
 
             var dto = _mapper.Map<ImmobileDto>(immobile);
-
             return Result.Success(dto);
         }
     }

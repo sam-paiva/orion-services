@@ -3,6 +3,7 @@ using MediatR;
 using OperationResult;
 using Orion.Core.Entities.Properties;
 using Orion.Shared;
+using System.Linq.Expressions;
 
 namespace Orion.Application.Queries.GetProperties
 {
@@ -19,7 +20,8 @@ namespace Orion.Application.Queries.GetProperties
 
         public async Task<Result<IEnumerable<ImmobileDto>>> Handle(GetPropertiesQuery request, CancellationToken cancellationToken)
         {
-            var immobiles = await _immobileRepository.GetAllAsync();
+            Expression<Func<Immobile, object>>[] IncludesList = new Expression<Func<Immobile, object>>[] { c => c.Address! };
+            var immobiles = await _immobileRepository.GetAllAsync(includes: IncludesList);
             var result = _mapper.Map<IEnumerable<ImmobileDto>>(immobiles);
 
             return Result.Success(result);

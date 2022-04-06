@@ -26,7 +26,7 @@ namespace Orion.Core.Entities.Users
         public bool EmailIsVerified { get; private set; }
         public Guid TokenHash { get; private set; }
         public string? ProfileImageUrl { get; private set; }
-        public ICollection<Immobile> Properties { get; private set; }
+        public virtual ICollection<Immobile> Properties { get; private set; }
         public string FullName { get => $"{FirstName} {LastName}"; }
 
         public void AddImmobile(Immobile immobile) => Properties.Add(immobile);

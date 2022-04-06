@@ -6,8 +6,13 @@ namespace Orion.Infra.Data.FluentMap
 {
     internal class ImmobileMap : IEntityTypeConfiguration<Immobile>
     {
-        public void Configure(EntityTypeBuilder<Immobile> modelBuilder)
+        public new void Configure(EntityTypeBuilder<Immobile> modelBuilder)
         {
+            modelBuilder
+           .HasOne<Address>(s => s.Address)
+           .WithOne(ad => ad.Immobile)
+           .HasForeignKey<Address>(ad => ad.ImmobileId).IsRequired();
+
             modelBuilder.HasKey(c => c.Id);
             modelBuilder.Property(c => c.Id).ValueGeneratedOnAdd().IsRequired();
             modelBuilder.Property(c => c.Title).HasMaxLength(250).IsRequired();
@@ -15,7 +20,7 @@ namespace Orion.Infra.Data.FluentMap
             modelBuilder.Property(c => c.ImmobileType).IsRequired();
             modelBuilder.Property(c => c.CreationDate).IsRequired();
             modelBuilder.Property(c => c.AcquisitionType).IsRequired();
-            modelBuilder.Property(c => c.Address).HasMaxLength(250).IsRequired();
+            modelBuilder.Ignore(c => c.ValidationResult);
         }
     }
 }

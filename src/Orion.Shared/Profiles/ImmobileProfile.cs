@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Orion.Core.Entities.Properties;
+using Orion.Shared.Dtos;
 
 namespace Orion.Shared
 {
@@ -8,6 +9,7 @@ namespace Orion.Shared
         public ImmobileProfile()
         {
             CreateMap<Immobile, ImmobileDto>().ReverseMap();
+            CreateMap<Address, AddressDto>().ReverseMap();
         }
     }
 }
