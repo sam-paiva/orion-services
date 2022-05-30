@@ -3,6 +3,7 @@
     public enum AcquisitionType
     {
         Rent,
-        Sale
+        Sale,
+        RentOrSale
     }
 }

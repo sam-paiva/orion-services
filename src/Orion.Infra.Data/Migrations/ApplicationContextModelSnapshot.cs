@@ -80,6 +80,10 @@ namespace Orion.Infra.Data.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("acquisition_type");
 
+                    b.Property<int>("Bedrooms")
+                        .HasColumnType("integer")
+                        .HasColumnName("bedrooms");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("creation_date");
@@ -116,6 +120,12 @@ namespace Orion.Infra.Data.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
+
+                    b.Property<string>("WhatsappContact")
+                        .IsRequired()
+                        .HasMaxLength(18)
+                        .HasColumnType("character varying(18)")
+                        .HasColumnName("whatsapp_contact");
 
                     b.HasKey("Id")
                         .HasName("pk_properties");

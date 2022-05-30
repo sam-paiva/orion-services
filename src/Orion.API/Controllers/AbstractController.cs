@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Orion.API.Infra;
+using Orion.Application;
 using Orion.Application.Exceptions;
 using System.Collections;
 
@@ -12,7 +14,10 @@ namespace Orion.API.Controllers
         public AbstractController(IMediator mediator) => _mediator = mediator;
 
         protected Task<TResponse> SendCommand<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken)
-         => _mediator.Send(request, cancellationToken);
+        {
+            FillUserId(request);
+            return _mediator.Send(request, cancellationToken);
+        }
 
         protected IActionResult ErrorResponse(Exception exception)
         {
@@ -38,6 +43,14 @@ namespace Orion.API.Controllers
             }
 
             return UnprocessableEntity(errorsList);
+        }
+
+        private void FillUserId<TRequest>(TRequest request)
+        {
+            if (request is not IUserRequest authenticable)
+                return;
+
+            authenticable.UserId = Guid.Parse(User.GetUserId());
         }
     }
 }

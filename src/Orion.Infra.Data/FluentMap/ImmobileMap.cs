@@ -6,7 +6,7 @@ namespace Orion.Infra.Data.FluentMap
 {
     internal class ImmobileMap : IEntityTypeConfiguration<Immobile>
     {
-        public new void Configure(EntityTypeBuilder<Immobile> modelBuilder)
+        public void Configure(EntityTypeBuilder<Immobile> modelBuilder)
         {
             modelBuilder
            .HasOne<Address>(s => s.Address)
@@ -18,6 +18,7 @@ namespace Orion.Infra.Data.FluentMap
             modelBuilder.Property(c => c.Title).HasMaxLength(250).IsRequired();
             modelBuilder.Property(c => c.Description).HasMaxLength(700).IsRequired();
             modelBuilder.Property(c => c.ImmobileType).IsRequired();
+            modelBuilder.Property(c => c.WhatsappContact).HasMaxLength(18).IsRequired();
             modelBuilder.Property(c => c.CreationDate).IsRequired();
             modelBuilder.Property(c => c.AcquisitionType).IsRequired();
             modelBuilder.Ignore(c => c.ValidationResult);

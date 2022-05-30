@@ -39,6 +39,8 @@ namespace Orion.Infra.Data.Migrations
                     title = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     description = table.Column<string>(type: "character varying(700)", maxLength: 700, nullable: false),
                     photos_url = table.Column<string[]>(type: "text[]", nullable: false),
+                    bedrooms = table.Column<int>(type: "integer", nullable: false),
+                    whatsapp_contact = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: false),
                     price = table.Column<decimal>(type: "numeric", nullable: false),
                     acquisition_type = table.Column<int>(type: "integer", nullable: false),
                     immobile_type = table.Column<int>(type: "integer", nullable: false),

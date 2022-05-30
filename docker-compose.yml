@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  orion.api:
+    image: ${DOCKER_REGISTRY-}orionapi
+    build:
+      context: .
+      dockerfile: src/Orion.API/Dockerfile

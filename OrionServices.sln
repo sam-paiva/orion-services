@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.API", "src\Orion.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.CrossCutting.IoC", "src\Orion.CrossCutting.IoC\Orion.CrossCutting.IoC.csproj", "{F7C6EC51-661B-48E5-98C5-A438FD18E109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion.Shared", "src\Orion.Shared\Orion.Shared.csproj", "{03694C84-9555-47B0-A933-2FDF7646BE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.Shared", "src\Orion.Shared\Orion.Shared.csproj", "{03694C84-9555-47B0-A933-2FDF7646BE4E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{97006BD3-60EF-4039-9111-722D93C451B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{03694C84-9555-47B0-A933-2FDF7646BE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03694C84-9555-47B0-A933-2FDF7646BE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03694C84-9555-47B0-A933-2FDF7646BE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97006BD3-60EF-4039-9111-722D93C451B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97006BD3-60EF-4039-9111-722D93C451B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97006BD3-60EF-4039-9111-722D93C451B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97006BD3-60EF-4039-9111-722D93C451B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,7 +21,7 @@ namespace Orion.Application.Commands.CreateImmobile
         {
             User user = await _userRepository.GetAsync(x => x.Id == request.UserId);
             Address address = new(request.Address!.City, request.Address.District, request.Address.State);
-            Immobile immobile = new(request.Title!, request.Description!, address, request.PhotosUrl, request.Price, request.AcquisitionType, request.ImmobileType);
+            Immobile immobile = new(request.Title!, request.Description!, request.Bedrooms, address, request.PhotosUrl, request.Price, request.AcquisitionType, request.ImmobileType, request.WhatsappContact!);
             user.AddImmobile(immobile);
             await _userRepository.UpdateAsync(user);
 

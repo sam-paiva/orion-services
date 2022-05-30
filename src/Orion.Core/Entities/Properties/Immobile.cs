@@ -5,7 +5,7 @@ namespace Orion.Core.Entities.Properties
 {
     public class Immobile : Entity
     {
-        public Immobile(string title, string description, Address address, string[] photosUrl, decimal price, AcquisitionType acquisitionType, ImmobileType immobileType)
+        public Immobile(string title, string description, int bedrooms, Address address, string[] photosUrl, decimal price, AcquisitionType acquisitionType, ImmobileType immobileType, string whatsappContact)
         {
             Title = title;
             Description = description;
@@ -14,6 +14,8 @@ namespace Orion.Core.Entities.Properties
             Price = price;
             AcquisitionType = acquisitionType;
             ImmobileType = immobileType;
+            WhatsappContact = whatsappContact;
+            Bedrooms = bedrooms;
         }
 
         protected Immobile() { }
@@ -21,6 +23,8 @@ namespace Orion.Core.Entities.Properties
         public string Title { get; private set; }
         public string Description { get; private set; }
         public string[] PhotosUrl { get; private set; }
+        public int Bedrooms { get; private set; }
+        public string WhatsappContact { get; private set; }
         public Decimal Price { get; private set; }
         public AcquisitionType AcquisitionType { get; private set; }
         public ImmobileType ImmobileType { get; private set; }
